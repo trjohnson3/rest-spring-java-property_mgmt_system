@@ -1,5 +1,7 @@
 package com.mycompany.property_management.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -33,7 +35,7 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<List<ErrorModel>> handleBusinessException(BusinessException theBusinessException) {
-        System.out.println("Business Exception thrown");
+
         return new ResponseEntity<List<ErrorModel>>(
                 theBusinessException.getErrors(),
                 HttpStatus.BAD_REQUEST
