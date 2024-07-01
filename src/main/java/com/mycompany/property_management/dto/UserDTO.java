@@ -6,15 +6,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO {
 
     private Long id;
+    @NotNull(message = "Name is a mandatory field.")
     private String name;
+    @NotNull(message = "Email is a mandatory field.")
+    @Size(min = 1, max = 50,
+            message = "Email should be between 1 and 50 characters in length")
     private String email;
+    @NotNull(message = "Phone is a mandatory field.")
     private String phone;
+    @NotNull(message = "Password is a mandatory field.")
+    @NotEmpty(message = "Password cannot be empty.")
     private String password;
 
     public Long getId() {

@@ -5,7 +5,6 @@ import java.util.List;
 public class BusinessException extends RuntimeException {
 
     private List<ErrorModel> errors;
-
     public BusinessException() {}
 
     public BusinessException(List<ErrorModel> errors) {
