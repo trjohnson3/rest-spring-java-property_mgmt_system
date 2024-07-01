@@ -13,11 +13,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
-    public Docket appApi() {
-        Docket docket = new Docket(DocumentationType.SWAGGER_2)
-                .select().apis(RequestHandlerSelectors
-                        .basePackage("com.mycompany.property_management.controller"))
-                .paths(PathSelectors.regex("/.*")).build();
-        return docket;
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.mycompany.property_management.controller"))
+                .paths(PathSelectors.regex("/.*"))
+                .build();
+
     }
 }

@@ -14,6 +14,17 @@ public class PropertyEntity {
     private String description;
     private String address;
     private String price;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="USER_ID", nullable=false)
+    private UserEntity userEntity;
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
 
     public Long getId() {
         return id;

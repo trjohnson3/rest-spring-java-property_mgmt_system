@@ -37,6 +37,14 @@ public class PropertyController {
         );
     }
 
+    @GetMapping("/properties/users/{userId}")
+    public ResponseEntity<List<PropertyDTO>> getAllPropertiesForUser(@PathVariable("userId") Long userId) {
+        List<PropertyDTO> propertyList = propertyService.getAllPropertiesByUser(userId);
+        return new ResponseEntity<List<PropertyDTO>>(
+                propertyList,
+                HttpStatus.OK);
+    }
+
     @PostMapping("/properties")
     public ResponseEntity<PropertyDTO> createProperty(@RequestBody PropertyDTO thePropertyDTO) {
         thePropertyDTO = propertyService.saveProperty(thePropertyDTO);

@@ -8,6 +8,7 @@ public interface PropertyService {
 
     PropertyDTO saveProperty(PropertyDTO propertyDTO);
     List<PropertyDTO> getAllProperties();
+    List<PropertyDTO> getAllPropertiesByUser(Long userId);
     PropertyDTO getPropertyById(Long propertyId);
     PropertyDTO updateProperty(PropertyDTO propertyDTO, Long propertyId);
     PropertyDTO updatePropertyDescription(PropertyDTO propertyDTO, Long propertyId);
